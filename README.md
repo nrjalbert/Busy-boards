@@ -1,4 +1,4 @@
-## Welcome to GitHub Pages
+## Welcome PATHS Cyber Security Program
 
 You can use the [editor on GitHub](https://github.com/nrjalbert/PATHS-CS/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 
