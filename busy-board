@@ -1,0 +1,335 @@
+<pre>
+ <font color="#434f54">&#47;&#47;Button variables start at 0 to be off</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">buttonG</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">buttonA</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">buttonB</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">buttonE</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ <font color="#434f54">&#47;&#47;button state vars</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">buttonStateG</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">buttonStateA</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">buttonStateB</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;<font color="#00979c">int</font> <font color="#000000">buttonStateE</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+
+<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Busy Board for 4 letters by Nate Jalbert 2019</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Letter G</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">13</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">12</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Letter A</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">11</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">10</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Letter B</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">9</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">8</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Letter E</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">7</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">6</font><font color="#434f54">,</font> <font color="#00979c">OUTPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;G Button</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">5</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;A Button</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">4</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;B Button</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">3</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#434f54">&#47;&#47;E Button</font>
+ &nbsp;<font color="#d35400">pinMode</font><font color="#000000">(</font><font color="#000000">2</font><font color="#434f54">,</font> <font color="#00979c">INPUT</font><font color="#000000">)</font><font color="#000000">;</font>
+
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">inputReset</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#000000">buttonStateG</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">5</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">buttonStateA</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">4</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">buttonStateB</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">buttonStateE</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonStateG</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">buttonG</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button G Pressed&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button G: &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">buttonG</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonStateA</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">buttonA</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button A Pressed&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button A: &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">buttonA</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonStateB</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">buttonB</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button B Pressed&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button B: &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">buttonB</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonStateE</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">buttonE</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button E Pressed&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button E: &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">buttonE</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">13</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">12</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">11</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">10</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">9</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">8</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">7</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">6</font><font color="#434f54">,</font> <font color="#00979c">HIGH</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">13</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">12</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">11</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">10</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">9</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">8</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">7</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">digitalWrite</font><font color="#000000">(</font><font color="#000000">6</font><font color="#434f54">,</font> <font color="#00979c">LOW</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+<font color="#00979c">void</font> <font color="#000000">lightShow</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">{</font>
+<font color="#000000">inputReset</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#00979c">int</font> <font color="#000000">i</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font>
+<font color="#5e6d03">for</font> <font color="#000000">(</font><font color="#000000">i</font> <font color="#434f54">=</font> <font color="#000000">0</font><font color="#000000">;</font> <font color="#000000">i</font> <font color="#434f54">&lt;</font> <font color="#000000">5</font><font color="#000000">;</font> <font color="#000000">i</font><font color="#434f54">++</font><font color="#000000">)</font><font color="#000000">{</font>
+<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">buttonG</font><font color="#434f54">=</font><font color="#000000">0</font><font color="#000000">;</font>
+<font color="#000000">buttonA</font><font color="#434f54">=</font><font color="#000000">0</font><font color="#000000">;</font>
+<font color="#000000">buttonB</font><font color="#434f54">=</font><font color="#000000">0</font><font color="#000000">;</font> &nbsp;
+<font color="#000000">buttonE</font><font color="#434f54">=</font><font color="#000000">0</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+<font color="#000000">}</font>
+
+
+
+<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;<font color="#000000">buttonStateG</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">5</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">buttonStateA</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">4</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">buttonStateB</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">3</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">buttonStateE</font> <font color="#434f54">=</font> <font color="#d35400">digitalRead</font><font color="#000000">(</font><font color="#000000">2</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonStateG</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">buttonG</font> <font color="#434f54">=</font> <font color="#000000">1</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button G Pressed&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button G: &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">buttonG</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonStateA</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">buttonA</font> <font color="#434f54">=</font> <font color="#000000">1</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button A Pressed&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button A: &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">buttonA</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonStateB</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">buttonB</font> <font color="#434f54">=</font> <font color="#000000">1</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button B Pressed&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button B: &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">buttonB</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+
+ &nbsp;<font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonStateE</font> <font color="#434f54">==</font> <font color="#00979c">LOW</font><font color="#000000">)</font> <font color="#000000">{</font>
+ &nbsp;&nbsp;&nbsp;<font color="#000000">buttonE</font> <font color="#434f54">=</font> <font color="#000000">1</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button E Pressed&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;Button E: &#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#000000">buttonE</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">&#39;\n&#39;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;&nbsp;&nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">100</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;_ _ _ _&#34;);</font>
+ &nbsp;<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;_ _ _ E&#34;);</font>
+ &nbsp;<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;_ _ B _&#34;);</font>
+ &nbsp;<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;_ _ B E&#34;);</font>
+ &nbsp;<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ 
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;_ A _ _&#34;);</font>
+ &nbsp;<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;_ A _ E&#34;);</font>
+ &nbsp;<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;_ A B _&#34;);</font>
+ &nbsp;<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;_ A B E&#34;);</font>
+ &nbsp;<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;G _ _ _&#34;);</font>
+ &nbsp;<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;G _ _ E&#34;);</font>
+ &nbsp;<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;G _ B _&#34;);</font>
+ &nbsp;<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;G _ B E&#34;);</font>
+ &nbsp;<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;G A _ _&#34;);</font>
+ &nbsp;<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">0</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;GA _ E&#34;);</font>
+ &nbsp;<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">0</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<font color="#434f54">&#47;&#47;Serial.print(&#34;G A B _&#34;);</font>
+ &nbsp;<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ <font color="#000000">}</font>
+ <font color="#5e6d03">if</font> <font color="#000000">(</font><font color="#000000">buttonG</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonA</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonB</font> <font color="#434f54">==</font> <font color="#000000">1</font> <font color="#434f54">&amp;&amp;</font> <font color="#000000">buttonE</font> <font color="#434f54">==</font> <font color="#000000">1</font><font color="#000000">)</font><font color="#000000">{</font>
+ &nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#005c5f">&#34;GABE&#34;</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">lightShow</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterG</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterA</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterB</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterE</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#d35400">delay</font><font color="#000000">(</font><font color="#000000">1000</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterGoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterAoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterBoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;<font color="#000000">letterEoff</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+ &nbsp;
+ <font color="#000000">}</font>
+ <font color="#000000">inputReset</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
+<font color="#000000">}</font>
+
+</pre>
