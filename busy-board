@@ -155,6 +155,7 @@ letterG();
 letterA();
 letterB();
 letterE();
+delay(2000);
 buttonG=0;
 buttonA=0;
 buttonB=0;  
@@ -169,14 +170,18 @@ void loop() {
   buttonStateA = digitalRead(4);
   buttonStateB = digitalRead(3);
   buttonStateE = digitalRead(2);
+  if ((buttonStateG == LOW) || (buttonStateA == LOW) || (buttonStateB == LOW) || (buttonStateE == LOW)){
+  
+  
   if (buttonStateG == LOW) {
+    
     buttonG = 1;
     Serial.print("Button G Pressed");
     Serial.print('\n');
     Serial.print("Button G: ");
     Serial.print(buttonG);
     Serial.print('\n');
-    delay(100);
+    //delay(100);}
   }
 
   if (buttonStateA == LOW) {
@@ -186,7 +191,7 @@ void loop() {
     Serial.print("Button A: ");
       Serial.print(buttonA);
       Serial.print('\n');
-    delay(100);
+    //delay(100);
   }
 
   if (buttonStateB == LOW) {
@@ -206,7 +211,7 @@ void loop() {
     Serial.print("Button E: ");
       Serial.print(buttonE);
       Serial.print('\n');
-    delay(100);
+    //delay(100);
   }
  if (buttonG == 0 && buttonA == 0 && buttonB == 0 && buttonE == 0){
   //Serial.print("_ _ _ _");
@@ -328,5 +333,6 @@ void loop() {
   letterEoff();
   
  }
- inputReset();
-}
+ //inputReset();
+  }
+  }
